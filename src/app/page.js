@@ -102,8 +102,8 @@ const handleSubmit = async () => {
     //         console.error("Error2:", error);
     //     }
     const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
-    try {
-        console.log(API_BASE_URL);
+    // try {
+    //     console.log(API_BASE_URL);
         const response = await fetch(API_BASE_URL, {
             method: "POST",
             headers: {
@@ -115,9 +115,9 @@ const handleSubmit = async () => {
         console.log("Response status:", response.status);
         const data = await response.json();
         console.log("Response data:", data);
-    } catch (error) {
-        console.error("Error2:", error);
-    }
+    // } catch (error) {
+    //     console.error("Error2:", error);
+    // }
 
 };
   // } catch (error) {
