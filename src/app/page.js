@@ -101,19 +101,13 @@ const handleSubmit = async () => {
     //     } catch (error) {
     //         console.error("Error2:", error);
     //     }
-    const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
+    const API_BASE_URL = "https://aki7avsrmd33ijedo3g5z3w7mq0kruqw.lambda-url.us-west-2.on.aws/";
     try {
         console.log(API_BASE_URL);
         const response = await fetch(API_BASE_URL, {
             method: "POST",
             'headers': {
-                'Access-Control-Allow-Origin': '*',  
-                'Access-Control-Allow-Headers': '*',
-                'Access-Control-Allow-Methods': '*', 
-                'Access-Control-Expose-Headers': '*',  
-                'Access-Control-Max-Age': '300',  
-                'Access-Control-Allow-Credentials': 'false',  
-                'Content-Type': 'application/json'
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(payload)
         });
