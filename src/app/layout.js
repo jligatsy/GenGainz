@@ -1,3 +1,4 @@
+// src/app/layout.js
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 
@@ -19,10 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Main wrapper for content */}
+        <main>{children}</main>
       </body>
     </html>
   );
