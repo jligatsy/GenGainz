@@ -114,6 +114,7 @@ const handleSubmit = async () => {
                 'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(payload)
         });
 
