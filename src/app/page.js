@@ -74,22 +74,29 @@ const handleSubmit = async () => {
     // In your UI code, make sure API_BASE_URL is set to:
     const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com";
 
-    // And your fetch call should be:
-    const response = await fetch(`\${API_BASE_URL}/InputHandler`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // You might need these CORS headers
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(payload),
-        });
+        try {
+            // Notice the /dev/InputHandler in the URL
+            const response = await fetch(`\${API_BASE_URL}/dev/InputHandler`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify(payload),
+            });
 
-    console.log("i made it this far."); 
+            console.log("Response status:", response.status);
+            // const data = await response.json();
+            // console.log("Response data:", data);
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+};
   // } catch (error) {
   //   alert("Failed to get user data");
   // }
-};
+// };
 
 
 return (
