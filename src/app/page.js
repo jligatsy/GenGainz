@@ -91,7 +91,8 @@ const handleSubmit = async () => {
     const data = await response.json();
     console.log("Response data:", data);
 
-    // ✅ Navigate to /workout page after successful response
+    sessionStorage.setItem("workoutData", JSON.stringify(data));
+    
     router.push("/workout");
 
   } catch (error) {
