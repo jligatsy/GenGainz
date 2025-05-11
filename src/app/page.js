@@ -13,6 +13,8 @@ const [formData, setFormData] = useState({
   heightFeet: "",
   heightInches: "",
   sex: "",
+  workoutTime : "",
+  fitnessLevel: "",
   bodyAreas: [],
   muscleGroups: [],
 });
@@ -61,13 +63,13 @@ const handleSubmit = async () => {
     const payload = {
       age: formData.age,
       weight: formData.weight,
-      feet: formData.heightFeet,
-      inch: formData.heightInch,
-      gender: formData.gender,
-      workout_time: formData.workoutTime,
-      workout_level: formData.workoutLevel,
-      body_parts: formData.bodyAreas,
-      muscle_groups: formData.muscleGroups,
+      heightFeet: formData.heightFeet,
+      heightInches: formData.heightInches,
+      sex: formData.sex,
+      workoutTime: formData.workoutTime,
+      fitnessLevel: formData.fitnessLevel,
+      bodyAreas: formData.bodyAreas,
+      muscleGroups: formData.muscleGroups,
     };
 
     // Make the API call without API key
