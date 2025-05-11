@@ -78,7 +78,7 @@ const handleSubmit = async () => {
             // Notice the /dev/InputHandler in the URL
             const response = await fetch(API_BASE_URL, {
                 method: "POST",
-                mode : "cors",
+                mode : "no-cors",
                 headers: {
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",
