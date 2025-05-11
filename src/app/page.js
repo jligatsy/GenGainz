@@ -10,7 +10,6 @@ const [currentStep, setCurrentStep] = useState(1);
 const [formData, setFormData] = useState({
   age: "",
   weight: "",
-  weightUnit: "lbs",
   heightFeet: "",
   heightInches: "",
   sex: "",
