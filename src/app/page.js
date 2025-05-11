@@ -107,14 +107,14 @@ const handleSubmit = async () => {
         const response = await fetch(API_BASE_URL, {
             method: "POST",
             'headers': {
-                'Access-Control-Allow-Origin': 'https://main.d2zs4034r8s6r9.amplifyapp.com',
-                'Access-Control-Allow-Methods': '*',
-                'Access-Control-Allow-Headers': 'authorization,content-type',
-                'Access-Control-Expose-Headers': 'date,x-api-id',
-                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Origin': '*',  
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods': '*', 
+                'Access-Control-Expose-Headers': '*',  
+                'Access-Control-Max-Age': '300',  
+                'Access-Control-Allow-Credentials': 'false',  
                 'Content-Type': 'application/json'
             },
-            credentials: 'include', 
             body: JSON.stringify(payload)
         });
 
