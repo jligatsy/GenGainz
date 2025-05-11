@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+export const API_BASE_URL = "https://wxhv3n7m0d.execute-api.us-west-2.amazonaws.com/dev";
 
 export default function MultiStepForm() {
 const totalSteps = 5;
