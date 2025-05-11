@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export default function MultiStepForm() {
 const totalSteps = 5;
 const [currentStep, setCurrentStep] = useState(1);
@@ -52,9 +54,34 @@ const handleBodyAreaSelection = (area) => {
   });
 };
 
-const handleSubmit = () => {
-  console.log("Form submitted!", formData, selectedAreas, selectedMuscles);
-  // Submit logic here (API call, navigation, etc.)
+const handleSubmit = async () => {
+  try {
+    console.log("Form submitted!", formData, selectedAreas, selectedMuscles);
+
+    // Prepare the request payload
+    const payload = {
+      age: formData.age,
+      weight: formData.weight,
+      feet: formData.heightFeet,
+      inch: formData.heightInch,
+      gender: formData.gender,
+      workout_time: formData.workoutTime,
+      workout_level: formData.workoutLevel,
+      body_parts: selectedAreas,
+      muscle_groups: selectedMuscles,
+    };
+
+    // Make the API call without API key
+    const response = await fetch(`${API_BASE_URL}/workout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    alert("Failed to get user data");
+  }
 };
 
 
