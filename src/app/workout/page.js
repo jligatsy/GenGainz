@@ -1,7 +1,9 @@
 // src/app/workout/page.js
 
-import React from "react";
-import "../styles/workout-page.css"; // adjust if needed
+"use client"; // if needed, add this if using App Router + hooks
+
+import React, { useEffect } from "react";
+import "../styles/workout-page.css";
 
 const exercises = [
   { name: "Barbell Squat", equipment: "Barbell", duration: "~ 6 min" },
@@ -13,6 +15,10 @@ const exercises = [
 ];
 
 export default function WorkoutPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="workout-container">
       <h1 className="title">Your Personalized Workout</h1>

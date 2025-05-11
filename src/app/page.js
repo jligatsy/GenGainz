@@ -1,6 +1,9 @@
+
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 export default function MultiStepForm() {
 const totalSteps = 5;
@@ -53,73 +56,115 @@ const handleBodyAreaSelection = (area) => {
   });
 };
 
+
+const router = useRouter(); // Make sure this is declared at the top inside your component
+
 const handleSubmit = async () => {
-  // try {
-    console.log("Form submitted!", formData);
+  console.log("Form submitted!", formData);
 
-    // Prepare the request payload
-    const payload = {
-      age: formData.age,
-      weight: formData.weight,
-      heightFeet: formData.heightFeet,
-      heightInches: formData.heightInches,
-      sex: formData.sex,
-      workoutTime: formData.workoutTime,
-      fitnessLevel: formData.fitnessLevel,
-      bodyAreas: formData.bodyAreas,
-      muscleGroups: formData.muscleGroups,
-    };
+  const payload = {
+    age: formData.age,
+    weight: formData.weight,
+    heightFeet: formData.heightFeet,
+    heightInches: formData.heightInches,
+    sex: formData.sex,
+    workoutTime: formData.workoutTime,
+    fitnessLevel: formData.fitnessLevel,
+    bodyAreas: formData.bodyAreas,
+    muscleGroups: formData.muscleGroups,
+  };
 
-    console.log(payload);
-    // everything is printed
-    
+  console.log(payload);
 
+  const API_BASE_URL = "https://aki7avsrmd33ijedo3g5z3w7mq0kruqw.lambda-url.us-west-2.on.aws/";
+  try {
+    console.log(API_BASE_URL);
+    const response = await fetch(API_BASE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-    // Make the API call without API key
-    // In your UI code, make sure API_BASE_URL is set to:
-    // const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
-    
-    //     try {
-    //       console.log(API_BASE_URL);
-    //         // Notice the /dev/InputHandler in the URL
-    //         const response = await fetch(API_BASE_URL, {
-    //             method: "POST",
-    //             headers: {
-    //               // make sure headers are like in lambda 
-    //               'Access-Control-Allow-Origin': 'https://main.d2zs4034r8s6r9.amplifyapp.com',
-    //               'Access-Control-Allow-Headers': 'Content-Type,Authorization,Access-control-allow-origin',
-    //               'Access-Control-Allow-Methods': 'OPTIONS,POST',
-    //               'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(payload)
-    //         });
+    console.log("Response status:", response.status);
+    const data = await response.json();
+    console.log("Response data:", data);
 
-    //         console.log("Response status:", response.status);
-    //         // const data = await response.json();
-    //         // console.log("Response data:", data);
-    //         console.log("hellowww");
-    //     } catch (error) {
-    //         console.error("Error2:", error);
-    //     }
-    const API_BASE_URL = "https://aki7avsrmd33ijedo3g5z3w7mq0kruqw.lambda-url.us-west-2.on.aws/";
-    try {
-        console.log(API_BASE_URL);
-        const response = await fetch(API_BASE_URL, {
-            method: "POST",
-            'headers': {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload)
-        });
+    // ✅ Navigate to /workout page after successful response
+    router.push("/workout");
 
-        console.log("Response status:", response.status);
-        const data = await response.json();
-        console.log("Response data:", data);
-    } catch (error) {
-        console.error("Error2:", error);
-    }
-
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  }
 };
+
+// const handleSubmit = async () => {
+//   // try {
+//     console.log("Form submitted!", formData);
+
+//     // Prepare the request payload
+//     const payload = {
+//       age: formData.age,
+//       weight: formData.weight,
+//       heightFeet: formData.heightFeet,
+//       heightInches: formData.heightInches,
+//       sex: formData.sex,
+//       workoutTime: formData.workoutTime,
+//       fitnessLevel: formData.fitnessLevel,
+//       bodyAreas: formData.bodyAreas,
+//       muscleGroups: formData.muscleGroups,
+//     };
+
+//     console.log(payload);
+//     // everything is printed
+    
+
+//     // Make the API call without API key
+//     // In your UI code, make sure API_BASE_URL is set to:
+//     // const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
+    
+//     //     try {
+//     //       console.log(API_BASE_URL);
+//     //         // Notice the /dev/InputHandler in the URL
+//     //         const response = await fetch(API_BASE_URL, {
+//     //             method: "POST",
+//     //             headers: {
+//     //               // make sure headers are like in lambda 
+//     //               'Access-Control-Allow-Origin': 'https://main.d2zs4034r8s6r9.amplifyapp.com',
+//     //               'Access-Control-Allow-Headers': 'Content-Type,Authorization,Access-control-allow-origin',
+//     //               'Access-Control-Allow-Methods': 'OPTIONS,POST',
+//     //               'Content-Type': 'application/json'
+//     //             },
+//     //             body: JSON.stringify(payload)
+//     //         });
+
+//     //         console.log("Response status:", response.status);
+//     //         // const data = await response.json();
+//     //         // console.log("Response data:", data);
+//     //         console.log("hellowww");
+//     //     } catch (error) {
+//     //         console.error("Error2:", error);
+//     //     }
+//     const API_BASE_URL = "https://aki7avsrmd33ijedo3g5z3w7mq0kruqw.lambda-url.us-west-2.on.aws/";
+//     try {
+//         console.log(API_BASE_URL);
+//         const response = await fetch(API_BASE_URL, {
+//             method: "POST",
+//             'headers': {
+//               "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify(payload)
+//         });
+
+//         console.log("Response status:", response.status);
+//         const data = await response.json();
+//         console.log("Response data:", data);
+//     } catch (error) {
+//         console.error("Error2:", error);
+//     }
+
+// };
   // } catch (error) {
   //   alert("Failed to get user data");
   // }
@@ -159,7 +204,7 @@ return (
       {currentStep === 2 && "Choose your workout time"}
       {currentStep === 3 && "What’s your fitness level?"}
       {currentStep === 4 && "Which areas of your body do you want to focus on? (Select all that apply)"}
-      {currentStep === 5 && "Choose the muscle groups you care most about (Optional)"}
+      {currentStep === 5 && "Choose the muscle groups you care most about (Select all that apply)"}
     </h1>
 
     {/* Middle content - holds the actual step content */}
