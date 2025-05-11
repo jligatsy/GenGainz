@@ -55,8 +55,8 @@ const handleBodyAreaSelection = (area) => {
 };
 
 const handleSubmit = async () => {
-  try {
-    console.log("Form submitted!", formData, selectedAreas, selectedMuscles);
+  // try {
+    console.log("Form submitted!", formData);
 
     // Prepare the request payload
     const payload = {
@@ -67,8 +67,8 @@ const handleSubmit = async () => {
       gender: formData.gender,
       workout_time: formData.workoutTime,
       workout_level: formData.workoutLevel,
-      body_parts: selectedAreas,
-      muscle_groups: selectedMuscles,
+      body_parts: formData.bodyAreas,
+      muscle_groups: formData.muscleGroups,
     };
 
     // Make the API call without API key
@@ -79,9 +79,11 @@ const handleSubmit = async () => {
       },
       body: JSON.stringify(payload),
     });
-  } catch (error) {
-    alert("Failed to get user data");
-  }
+
+    console.log("i made it this far."); 
+  // } catch (error) {
+  //   alert("Failed to get user data");
+  // }
 };
 
 
