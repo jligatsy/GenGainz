@@ -70,29 +70,55 @@ const handleSubmit = async () => {
       muscleGroups: formData.muscleGroups,
     };
 
+    console.log(payload);
+    // everything is printed
+    
+
+
     // Make the API call without API key
     // In your UI code, make sure API_BASE_URL is set to:
+    // const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
+    
+    //     try {
+    //       console.log(API_BASE_URL);
+    //         // Notice the /dev/InputHandler in the URL
+    //         const response = await fetch(API_BASE_URL, {
+    //             method: "POST",
+    //             headers: {
+    //               // make sure headers are like in lambda 
+    //               'Access-Control-Allow-Origin': 'https://main.d2zs4034r8s6r9.amplifyapp.com',
+    //               'Access-Control-Allow-Headers': 'Content-Type,Authorization,Access-control-allow-origin',
+    //               'Access-Control-Allow-Methods': 'OPTIONS,POST',
+    //               'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(payload)
+    //         });
+
+    //         console.log("Response status:", response.status);
+    //         // const data = await response.json();
+    //         // console.log("Response data:", data);
+    //         console.log("hellowww");
+    //     } catch (error) {
+    //         console.error("Error2:", error);
+    //     }
     const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
+    try {
+        console.log(API_BASE_URL);
+        const response = await fetch(API_BASE_URL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
 
-        try {
-            // Notice the /dev/InputHandler in the URL
-            const response = await fetch(API_BASE_URL, {
-                method: "POST",
-                // mode : "no-cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-                body: JSON.stringify(payload),
-            });
+        console.log("Response status:", response.status);
+        const data = await response.json();
+        console.log("Response data:", data);
+    } catch (error) {
+        console.error("Error2:", error);
+    }
 
-            console.log("Response status:", response.status);
-            // const data = await response.json();
-            // console.log("Response data:", data);
-
-        } catch (error) {
-            console.error("Error:", error);
-        }
 };
   // } catch (error) {
   //   alert("Failed to get user data");
@@ -218,21 +244,21 @@ return (
         </>
       )}
 
-      {currentStep === 2 && (
-        <>
-          <div className="flex gap-4">
-            {['15 min', '30 min', '45 min', '60 min', '75 min'].map((time) => (
-              <button
-                key={time}
-                className={`time-option ${formData.workoutTime === time ? "selected" : ""}`}
-                onClick={() => setFormData((prev) => ({ ...prev, workoutTime: time }))}
-              >
-                {time}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+    {currentStep === 2 && (
+      <>
+        <div className="flex gap-4">
+          {[15, 30, 45, 60, 75].map((time) => (
+            <button
+              key={time}
+              className={`time-option ${formData.workoutTime === time ? "selected" : ""}`}
+              onClick={() => setFormData((prev) => ({ ...prev, workoutTime: time }))}
+            >
+              {time} min
+            </button>
+          ))}
+        </div>
+      </>
+    )}
 
       {currentStep === 3 && (
         <>
