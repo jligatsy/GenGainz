@@ -72,11 +72,11 @@ const handleSubmit = async () => {
 
     // Make the API call without API key
     // In your UI code, make sure API_BASE_URL is set to:
-    const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com";
+    const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com/dev/InputHandler";
 
         try {
             // Notice the /dev/InputHandler in the URL
-            const response = await fetch(`\${API_BASE_URL}/dev/InputHandler`, {
+            const response = await fetch(API_BASE_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
