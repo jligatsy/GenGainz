@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 
-export const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com";
-
 export default function MultiStepForm() {
 const totalSteps = 5;
 const [currentStep, setCurrentStep] = useState(1);
@@ -73,13 +71,19 @@ const handleSubmit = async () => {
     };
 
     // Make the API call without API key
-    const response = await fetch(`${API_BASE_URL}/workout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    // In your UI code, make sure API_BASE_URL is set to:
+    const API_BASE_URL = "https://x10opvv128.execute-api.us-west-2.amazonaws.com";
+
+    // And your fetch call should be:
+    const response = await fetch(`\${API_BASE_URL}/InputHandler`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // You might need these CORS headers
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(payload),
+        });
 
     console.log("i made it this far."); 
   // } catch (error) {
