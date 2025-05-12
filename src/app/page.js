@@ -175,6 +175,7 @@ const handleSubmit = async () => {
 return (
   <div className="form-content">
     {/* Stepper */}
+    <img src="/finallogo.png" alt="Logo" className="form-logo" />
     <div className="stepper-container">
       {Array.from({ length: totalSteps }, (_, i) => {
         const step = i + 1;
@@ -242,24 +243,25 @@ return (
           
           {/* Height */}
           <div className="mb-5">
-            <label className="block">Height</label>
-            <div className="flex gap-4">
-              <input
-                type="number"
-                name="heightFeet"
-                placeholder="Feet"
-                value={formData.heightFeet}
-                onChange={handleChange}
-              />
-              <input
-                type="number"
-                name="heightInches"
-                placeholder="Inches"
-                value={formData.heightInches}
-                onChange={handleChange}
-              />
-            </div>
+          <label className="block">Height</label>
+          <div className="height-inputs">
+            <input
+              type="number"
+              name="heightFeet"
+              placeholder="Feet"
+              value={formData.heightFeet}
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              name="heightInches"
+              placeholder="Inches"
+              value={formData.heightInches}
+              onChange={handleChange}
+            />
           </div>
+        </div>
+
 
           {/* Sex */}
           <div className="mb-5">

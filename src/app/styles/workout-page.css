@@ -1,34 +1,188 @@
-/* workout-page.css */
+/* Ensure base spacing and prevent horizontal scroll */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+/* Container for all workout content */
 .workout-container {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+  padding: 8rem 1.25rem 2.5rem; /* top: 128px to clear logo */
+  max-width: 75rem; /* 1200px */
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
+/* Logo positioned in top-right, fixed */
+.logo {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 8rem;
+  height: auto;
+  z-index: 1000;
+}
+
+/* Title styling */
 .title {
-  font-size: 2em;
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
 }
 
+/* Workout info block */
+.info {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Button layout */
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Regenerate button */
+.regenerate-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #5dbffd;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.regenerate-btn:hover {
+  background-color: #3aaeea;
+  transform: translateY(-1px);
+}
+
+.regenerate-btn:focus {
+  outline: 3px solid #b3e5fc;
+  outline-offset: 2px;
+}
+
+.regenerate-btn:disabled {
+  background-color: #cbefff;
+  color: #7f9db3;
+  cursor: not-allowed;
+}
+
+/* Grid for exercise cards */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 250px); /* fixed width */
+  gap: 1.25rem;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
 }
 
+/* Individual exercise card */
 .card {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background-color: #f5f5f5;
+  padding: 2.5rem 1.25rem 1.25rem; /* extra top padding for number badge */
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: left;
 }
 
-.exercise-name {
-  font-size: 1.2em;
+/* Number badge on top-left of card */
+.card-number {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background-color: #333;
+  color: #fff;
   font-weight: bold;
+  width: 24px;
+  height: 24px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-ul {
-  padding-left: 20px;
-  margin: 10px 0;
+/* Exercise name styling */
+.exercise-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.2rem 0;
+}
+
+/* Sets line */
+.sets {
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+
+/* Link to details */
+.details-link {
+  display: inline-block;
+  margin-top: 0.625rem;
+  color: #3b82f6;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+}
+
+/* Optional play button (if used) */
+.play-button {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.75rem;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .logo {
+    width: 6rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .info {
+    font-size: 1rem;
+  }
+
+  .regenerate-btn {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    padding: 2rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    display: none; /* hide logo on very small screens to avoid overlap */
+  }
 }

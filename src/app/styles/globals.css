@@ -15,8 +15,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  min-height: 100%;
-  padding: 0;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -139,13 +140,19 @@ button:disabled {
 }
 
 .form-content {
-  max-width: 800px;
-  width: 100%;
+  width: 90vw; /* Responsive to viewport width */
+  max-width: 800px; /* Keeps it from getting too wide */
+  min-width: 400px; /* Prevents it from becoming too narrow */
+  margin: 0 auto;
   background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  overflow: auto; /* Allows scroll if content overflows */
+  max-height: 90vh; /* Prevents it from getting too tall */
 }
+
 
 input[type="radio"] {
   accent-color: #3182ce;
@@ -217,11 +224,12 @@ input[type="radio"] {
 }
 
 
+
 .form-container {
   width: 100%;
   max-width: 768px;
   min-height: 500px;
-  margin: 0 auto;
+  margin-bottom: 2rem;
   padding: 1.5rem;
   background: white;
   border-radius: 12px;
@@ -236,4 +244,32 @@ input[type="radio"] {
     min-height: auto; /* allow container to shrink if needed */
     border-radius: 8px;
   }
+}
+
+
+.height-inputs {
+  display: flex;
+  gap: 1rem; /* or any value like 10px, 16px */
+}
+
+.block {
+  font-size: 1.25rem; /* Example: 20px */
+  font-weight: bold;  /* Optional: make it bold */
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.flex-inline {
+  font-size: 1.22rem;
+}
+
+.form-logo {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 8rem;
+  height: auto;
+  z-index: 1000;
+  margin-right: 1rem;
+  margin-top: 1rem;
 }
