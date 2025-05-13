@@ -1,4 +1,4 @@
-# GenGainz - Personal Fitness App - Cloud AWS Hackathon (UI Repository)
+# GenGainz - Personal Fitness App - Cloud AWS Hackathon 
 Josephine Ligatsyah, Ashneet Rathora, Allison Yeh
 
 ## Overview
