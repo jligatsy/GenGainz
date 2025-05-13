@@ -13,7 +13,7 @@ This project was developed as part of the Cloud AWS Hackathon. It originally use
 
 ## Project Planning
 For an overview of the planning and design process, refer to the Canva document:  
-[Planning Document](https://www.canva.com/design/DAGnFBvVT5k/oGR_ZXDo358fj5mD5bo4JA/edit) (optional)
+[Planning Document](https://www.canva.com/design/DAGnFBvVT5k/oGR_ZXDo358fj5mD5bo4JA/edit) 
 
 ## Technologies Used
 * **Frontend:** React, Next.js
